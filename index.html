@@ -48,6 +48,10 @@
     .visitor {
       font-size: 18px;
       margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
     }
     .gif {
       width: 120px;
@@ -68,9 +72,36 @@
 
   <div class="speech-bubble">Prepare to get rowdy!</div>
 
+  <div id="countdown" class="countdown">LOADING...</div>
+
   <div class="visitor">
     You are visitor #
-  </div>                                
-                           <img src="https://geocities.live/img/test/counter.gif" class="gif">         
+    <img src="https://geocities.live/img/test/counter.gif" class="gif">
+  </div>
+
+  <script>
+    const countdown = document.getElementById("countdown");
+    const targetDate = new Date("2025-10-03T00:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        countdown.innerText = "🎉 It's Hackathon Day! 🎉";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / 1000 / 60) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      countdown.innerText = `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
 </body>
 </html>
