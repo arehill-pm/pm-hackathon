@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PolicyMe's Inaugural Hackathon</title>
+  <style>
+    body {
+      background-color: #ffffcc;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      text-align: center;
+      color: #000080;
+      background-image: url('https://www.transparenttextures.com/patterns/lined-paper.png');
+    }
+    h1 {
+      color: #ff0000;
+      font-size: 48px;
+      text-shadow: 2px 2px #00ffff;
+      animation: blink 1s infinite;
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+    .countdown {
+      font-size: 28px;
+      margin: 20px;
+      color: #008000;
+    }
+    .speech-bubble {
+      background: #fff;
+      border: 3px dashed #000;
+      padding: 20px;
+      display: inline-block;
+      margin-top: 20px;
+    }
+    .gif {
+      width: 120px;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <img src="https://media.giphy.com/media/xT0xeJpnrWC4XWblEk/giphy.gif" class="gif">
+  <h1>🎉 PolicyMe's Inaugural Hackathon 🎉</h1>
+  <h2>🗓️ October 3rd, 2025</h2>
+  <div class="countdown" id="countdown">Loading countdown...</div>
+  <p><strong>Featuring:</strong> 🤖 AI! 🔁 N8N! 🤠 ROWDINESS!</p>
+  <div class="speech-bubble">💬 Prepare to get rowdy!</div>
+  <img src="https://media.giphy.com/media/3og0IPxMM0erATueVW/giphy.gif" class="gif">
+  
+  <script>
+    const targetDate = new Date("2025-10-03T00:00:00").getTime();
+    const countdownEl = document.getElementById("countdown");
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance <= 0) {
+        countdownEl.innerHTML = "🎉 It's Hackathon Day! 🎉";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((distance / 1000 / 60) % 60);
+      const seconds = Math.floor((distance / 1000) % 60);
+
+      countdownEl.innerHTML = `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>
